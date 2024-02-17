@@ -1,0 +1,7 @@
+<div class="menu">
+  <ul>
+    <li *ngFor="let route of routes">
+      <a [routerLink]="route.path">{{ route.title }}</a>
+    </li>
+  </ul>
+</div>
