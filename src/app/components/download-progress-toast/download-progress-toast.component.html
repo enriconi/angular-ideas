@@ -1,0 +1,5 @@
+<div class="download-progress-toast" [class.completed]="completed">
+  <div class="progress-bar" [style.width.%]="progress"></div>
+  <div class="progress-text" *ngIf="!completed">{{ progress }}%</div>
+  <div class="completed-text" *ngIf="completed">Download finalizado</div>
+</div>

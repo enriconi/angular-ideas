@@ -1,1 +1,5 @@
 <p>cars works!</p>
+<button (click)="downloadFile('url_do_arquivo')">Download</button>
+<div *ngFor="let download of downloadQueue">
+  <app-download-progress-toast [url]="download"></app-download-progress-toast>
+</div>

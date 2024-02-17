@@ -10,3 +10,7 @@
   background-color: #333;
   color: #fff;
 }
+
+li:first-child {
+  display: none;
+}
