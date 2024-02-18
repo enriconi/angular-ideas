@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarMenuComponent } from './components/sidebar-menu/sidebar-menu.component';
-import { ToastComponent } from './components/toast/toast.component';
+import { DownloadProgressToastComponent } from './components/download-progress-toast/download-progress-toast.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SidebarMenuComponent, ToastComponent],
+  imports: [RouterOutlet, SidebarMenuComponent, DownloadProgressToastComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

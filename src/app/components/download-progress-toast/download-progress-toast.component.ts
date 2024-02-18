@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DownloadService } from '../../services/download.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -11,22 +11,34 @@ import { CommonModule } from '@angular/common';
   styleUrl: './download-progress-toast.component.scss'
 })
 export class DownloadProgressToastComponent implements OnInit, OnDestroy {
-  @Input() url: string = '';
-  progress = 0;
+  progressArray: { url: string; progress: number; completed?: boolean; }[] = [];
   progressSubscription: Subscription = new Subscription();
-  completed = false;
 
   constructor(private downloadService: DownloadService) {}
 
   ngOnInit() {
     this.progressSubscription = this.downloadService.downloadProgressChanged.subscribe(progress => {
-      if (progress.url === this.url) {
-        this.progress = progress.progress;
-        if (this.progress >= 100) {
-          this.completed = true;
-        }
+      if (!this.progressArray.find(p => p.url === progress.url)) {
+        this.progressArray.push(progress);
+      } else {
+        this.progressArray = this.progressArray.map(p => {
+          if (p.url === progress.url) {
+            return progress;
+          }
+          return p;
+        });
       }
+
+      this.progressArray.forEach(progress => {
+        if (progress.progress >= 100) {
+          progress.completed = true;
+        }
+      })
     });
+  }
+
+  calculatePosition(index: number): number {
+    return 20 + (index * 45);
   }
 
   ngOnDestroy() {
