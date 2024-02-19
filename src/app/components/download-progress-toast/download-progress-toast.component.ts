@@ -41,6 +41,11 @@ export class DownloadProgressToastComponent implements OnInit, OnDestroy {
     return 20 + (index * 45);
   }
 
+  calculateHeight(): number {
+    if (this.progressArray.length === 0) return 0;
+    return 20 + (this.progressArray.length * 45);
+  }
+
   ngOnDestroy() {
     this.progressSubscription.unsubscribe();
   }

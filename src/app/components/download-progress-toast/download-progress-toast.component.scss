@@ -7,18 +7,31 @@
   flex: 1;
 }
 
-
-.download-progress-toast {
+.download-progress-toast-container {
+  display: flex;
   position: fixed;
   bottom: 20px;
   right: 20px;
+  background-color: red;
+  border-radius: 5px;
+  width: 160px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.toast-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.download-progress-toast {
   background-color: #333;
   color: white;
   padding: 10px;
   border-radius: 5px;
   display: flex;
-  align-items: center;
-  width: 160px;
 }
 
 // .completed {

@@ -1,7 +1,11 @@
-<div class="download-progress-toast" [class.completed]="item.completed" [style.bottom.px]="calculatePosition(i)" *ngFor="let item of progressArray; let i = index">
-  <div *ngIf="!item.completed" class="container-info">
-    <div>Lote {{i+1}}</div>
-    <div class="loader"></div>
+<div class="download-progress-toast-container" [style.height.px]="calculateHeight()">
+  <div class="toast-wrapper">
+    <div class="download-progress-toast" [class.completed]="item.completed" [style.bottom.px]="calculatePosition(i)" *ngFor="let item of progressArray; let i = index">
+      <div *ngIf="!item.completed" class="container-info">
+        <div>Lote {{i+1}}</div>
+        <div class="loader"></div>
+      </div>
+      <div *ngIf="item.completed">Download finalizado</div>
+    </div>
   </div>
-  <div *ngIf="item.completed">Download finalizado</div>
 </div>
