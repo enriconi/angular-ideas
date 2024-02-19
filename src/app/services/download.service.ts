@@ -12,7 +12,6 @@ export class DownloadService {
   downloadProgressChanged = new Subject<{ url: string, progress: number }>();
 
   addToQueue(url: string) {
-    console.log('Currente Download', this.currentDownloads)
     this.downloadQueue.push(url);
     this.downloadQueueChanged.next([...this.downloadQueue]);
     this.startNextDownload();
